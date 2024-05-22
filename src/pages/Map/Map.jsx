@@ -1,13 +1,12 @@
 import { useEffect, useRef } from 'react';
 
 // default export 함수
-const Map = (currentMyLocation) => {
+const Map = ({ location }) => {
     const mapInstance = useRef(null);
 
     useEffect(() => {
         initMap();
-    }, [currentMyLocation]);
-
+    }, [location]);
 
     // Map 시작 설정 함수
     const initMap = () => {
@@ -20,7 +19,7 @@ const Map = (currentMyLocation) => {
                 position: naver.maps.Position.TOP_RIGHT
             },
             // 지도 초기 중심 좌표
-            center: new naver.maps.LatLng(37.3595704, 127.105399),
+            center: new naver.maps.LatLng(location.lat, location.lon),
             // 지도 초기 줌 레벨
             zoom: 15,
             // 지도 최소 줌 레벨
@@ -38,21 +37,28 @@ const Map = (currentMyLocation) => {
             mapDataControl: false,
         };
 
+        // 지도 생성
         mapInstance.current = new naver.maps.Map('map', mapOptions);
 
         // 초기화 후 마커 생성
         const marker = new naver.maps.Marker({
             // 생성될 마커의 위치
-            position: new naver.maps.LatLng(currentMyLocation.lat, currentMyLocation.lng),
+            position: new naver.maps.LatLng(location.lat, location.lon),
             // 마커를 표시할 Map 객체
             map: mapInstance.current
         });
 
         // Marker 클릭 => Map 초기화
         naver.maps.Event.addListener(marker, 'click', () => {
-            mapInstance.current?.setCenter(new naver.maps.LatLng(currentMyLocation.lat, currentMyLocation.lng));
+            mapInstance.current?.setCenter(new naver.maps.LatLng(location.lat, location.lng));
             mapInstance.current?.setZoom(16);
         });
+
+        // 지도 클릭 => Marker 생성
+        naver.maps.Event.addListener(mapInstance.current, 'click', (e) => {
+            marker.setPosition(e.coord);
+        });
+
 
     }
     return (

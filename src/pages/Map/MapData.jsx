@@ -3,7 +3,7 @@ import MapAxios from "../../apis/MapAxios";
 
 import "../../assets/css/Map.css"
 
-const MapData = () => {
+const MapData = ({ onAptCardClick }) => {
     const [mapData, setMapData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -19,8 +19,8 @@ const MapData = () => {
             }
         }
         fetchData();
-    }, [mapData]);
 
+    }, []);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -30,6 +30,11 @@ const MapData = () => {
         <div className="card aptlist">
             {mapData.length > 0 ? (mapData.map((apt) => (
                 <div className="card-body m-3" key={apt.aptName}
+                    onClick={
+                        () => onAptCardClick({
+                            lat: apt.lat, lon: apt.lon
+                        })}
+
                     style={{ backgroundColor: "GAINSBORO" }}>
                     <h5 className="card-title">{apt.aptName}</h5>
                     <p className="card-text">{apt.floor}</p>

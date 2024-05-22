@@ -4,8 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Article = () => {
   return (
     <>
-      <div className="d-flex flex-row">
-        <div className="card w-25 m-2 d-flex flex-wrap justify-content-around">
+      <div className="d-flex flex" >
+        <div style={{
+          backgroundColor: "gainsboro", position: "absolute",
+          height: "11em", end: "0", width: "100vw", left: "0",
+          alignSelf: "end"
+        }}></div>
+        <div className="card w-25 m-2">
           <img src="src/assets/img/house.jpg" alt="Home" className="d-block w-100" />
           <div className="card-body">
             <h4 className="card-title">Home</h4>
