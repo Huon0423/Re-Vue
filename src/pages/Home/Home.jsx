@@ -16,7 +16,11 @@ const Home = () => {
                         style={{
                             zIndex: "991",
                             maxWidth: "54vh",
+<<<<<<< HEAD
                             marginTop: "40rem",
+=======
+                            marginTop: "42rem",
+>>>>>>> 18f629b038b1ea12dc6afe95ddb8f9380fa93fb4
                         }}
                     >
                         <SearchBar></SearchBar>
