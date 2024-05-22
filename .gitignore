@@ -23,9 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-<<<<<<< HEAD
 *.env
 *.mp4
-=======
-*.env
->>>>>>> 18f629b038b1ea12dc6afe95ddb8f9380fa93fb4
