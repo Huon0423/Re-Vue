@@ -1,0 +1,9 @@
+.card:hover {
+    cursor: pointer;
+}
+
+
+.aptlist {
+    max-height: 80vh;
+    overflow-y: scroll;
+}
