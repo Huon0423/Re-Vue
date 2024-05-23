@@ -1,7 +1,7 @@
 const SearchBar = () => {
     return (
         <>
-            <div className="form-outline bg-light rounded d-flex">
+            <div className="form-outline bg-light rounded d-flex mt-5">
                 <input type="search" id="search"
                     className="form-control form-control-lg" placeholder="search"
                     style={{ minWidth: "45vh" }}
